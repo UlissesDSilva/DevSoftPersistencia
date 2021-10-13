@@ -16,12 +16,16 @@ public class Atv2 {
     System.out.print("Nom do arquivo final: ");
     arq3 = scan.nextLine();
 
-    InputStream txt01 = new FileInputStream("./"+arq1);
+    OutputStream os = new FileOutputStream("./"+arq3+".txt", true);
+    OutputStreamWriter osw = new OutputStreamWriter(os);
+    BufferedWriter bw = new BufferedWriter(osw);
+
+    InputStream txt01 = new FileInputStream("./"+arq1+".txt");
     InputStreamReader txtR01 = new InputStreamReader(txt01);
     BufferedReader txtBr01 = new BufferedReader(txtR01);
     String texto01 = txtBr01.readLine();
 
-    InputStream txt02 = new FileInputStream("./"+arq2);
+    InputStream txt02 = new FileInputStream("./"+arq2+".txt");
     InputStreamReader txtR02 = new InputStreamReader(txt02);
     BufferedReader txtBr02 = new BufferedReader(txtR02);
     String texto02 = txtBr02.readLine();
@@ -39,12 +43,10 @@ public class Atv2 {
       texto02 = txtBr02.readLine();
     }
 
-    OutputStream os = new FileOutputStream("./"+arq3, true);
-    OutputStreamWriter osw = new OutputStreamWriter(os);
-    BufferedWriter bw = new BufferedWriter(osw);
+    
 
     bw.write(textoFinal);
-    bw.newLine();   
+    bw.newLine(); 
 
     txt01.close();
     txt02.close();
